@@ -1,5 +1,5 @@
 const mockData = {
-    "GME": {
+    "GME": { 
         "meta": {
             "symbol": "GME",
             "interval": "1day",

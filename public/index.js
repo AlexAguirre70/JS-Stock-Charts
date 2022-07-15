@@ -20,8 +20,11 @@ async function main() {
     const averagePriceChartCanvas = document.querySelector('#average-price-chart');
     //get stock values via api
     const response = await fetch('https://api.twelvedata.com/time_series?symbol=GME,MSFT,DIS,BNTX&interval=1day&apikey=b18ff0b8dcb44a8ba373b1c2938aaafb')   
+    // parse into JSON to push objects into an  array
     const result = await response.json()
+    // declare and intialize each objects named the ticker symbol
     const { GME, MSFT, DIS, BNTX } = result;
+    //declare the stock array of objects created
     const stocks = [GME, MSFT, DIS, BNTX];
     stocks.forEach( stock => stock.values.reverse())
 
@@ -79,7 +82,7 @@ async function main() {
         }
     });
 }
-
+// function to find the highest value of each stock for the bar chart
 function findHighest(values) {
     let highest = 0;
     values.forEach(value => {
@@ -89,7 +92,7 @@ function findHighest(values) {
     })
     return highest
 }
-
+// function to determine the average for the pie chart
 function calculateAverage(values) {
     let total = 0;
     values.forEach(value => {
